@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 
 // Express
 const app: Application = express();
+
 const port = 5000;
 
 // Application routing
