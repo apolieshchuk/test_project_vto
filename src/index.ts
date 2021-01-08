@@ -3,7 +3,9 @@ import express, { Application, Request, Response } from 'express';
 // Express
 const app: Application = express();
 
-const port = 5000;
+// константы
+const port = 3000;
+const host = '0.0.0.0';
 
 // Application routing
 app.use('/', (req: Request, res: Response) => {
@@ -11,4 +13,4 @@ app.use('/', (req: Request, res: Response) => {
 });
 
 // Start server
-app.listen(port, () => console.log(`Server is listening on port ${port}!`));
+app.listen(port, host, () => console.log(`Server is listening on port ${port}!`));
