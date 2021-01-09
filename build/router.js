@@ -5,7 +5,6 @@ var __importDefault =
     return mod && mod.__esModule ? mod : { default: mod };
   };
 Object.defineProperty(exports, '__esModule', { value: true });
-// @ts-ignore
 var controller_1 = __importDefault(require('./controller'));
 var express = require('express');
 var router = express.Router();

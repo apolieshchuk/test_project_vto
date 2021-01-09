@@ -31,6 +31,6 @@ export default {
     // const formatedInput = regx.exec(req.body.maze);
     // console.log(parsedMaze);
 
-    res.status(200).send({ data: mazeMap });
+    res.status(200).send({ data: turns });
   },
 };
