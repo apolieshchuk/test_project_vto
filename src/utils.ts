@@ -22,24 +22,22 @@ export const createMazeMap = (mazeStr: string): MazeCell[][] => {
     }
 
     // set MazeCell object to all columns cells
-    return row.map(
-      (col: string, colIndex: number): MazeCell => {
-        // Validate COLS content
-        if (col !== '.' && col !== '#') {
-          throw new Error();
-        }
+    return row.map((col: string, colIndex: number): MazeCell => {
+      // Validate COLS content
+      if (col !== '.' && col !== '#') {
+        throw new Error();
+      }
 
-        // init mazeCell Object
-        const mazeCellObj = {
-          x: colIndex,
-          y: rowIndex,
-          distance: 0,
-          isWall: col === '#',
-        };
+      // init mazeCell Object
+      const mazeCellObj = {
+        x: colIndex,
+        y: rowIndex,
+        distance: 0,
+        isWall: col === '#',
+      };
 
-        return mazeCellObj;
-      },
-    );
+      return mazeCellObj;
+    });
   });
 };
 
