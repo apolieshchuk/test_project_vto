@@ -5,10 +5,10 @@ This is Votendo test server from A.Polieshchuk.
 
 # Server run
 
-For install node_modules use NPM INSTALL
-For run server use NPM START
-For build project use NPM RUN BUILD
-For run tests use NPM TEST
+For install node_modules use NPM INSTALL  
+For run server use NPM START  
+For build project use NPM RUN BUILD  
+For run tests use NPM TEST  
 
 # Server structure
 
