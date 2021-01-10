@@ -14,11 +14,5 @@ var app = express_1.default();
 app.use(express_1.default.json());
 // Application routing
 app.use('/', router_1.default);
-// Constants
-var port = 3000;
-var host = '0.0.0.0';
-// Start server
-app.listen(port, host, function () {
-  return console.log('Server is listening on port ' + port + '!');
-});
+exports.default = app;
 //# sourceMappingURL=app.js.map

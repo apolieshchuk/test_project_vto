@@ -2,23 +2,23 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 exports.mazeTurnsCounter = exports.parseRequest = void 0;
 /**
- * Parse maze-string from input and prepare MazeCell[]
- * @param mazeStr not formated maze string from input
+ * Parse maze-string from input and prepare MazeCell[].
+ *
+ * @param mazeStr JSON array row string
  */
 var parseRequest = function (mazeStr) {
-  // remove whitespaces and quotes
-  var maze = mazeStr.replace(/[\s"]/g, '');
-  // get mazes rows
-  var mazeRows = maze.match(/\[[.#,]*\]/g);
-  if (!mazeRows) {
-    return [];
+  // try parse JSON Array from frontend. If parse error, controller will catch it
+  var mazeRows = JSON.parse(mazeStr);
+  // check empty arrays
+  if (!mazeRows.length) {
+    throw new Error();
   }
   // build Maze Map with MazeCells Objects
   var mazeMap = mazeRows.map(function (row, rowIndex) {
     // maze columns Array with . | # values
-    var mazeColumnsRow = row.replace(/\[(.*)\]/g, '$1').split(',');
+    // const mazeColumnsRow: string[] = row.replace(/\[(.*)\]/g, '$1').split(',');
     // set MazeCell obj value in every mazeMap cell
-    var mazeColumns = mazeColumnsRow.map(function (col, colIndex) {
+    var mazeColumns = row.map(function (col, colIndex) {
       var mazeCellObj = {
         x: colIndex,
         y: rowIndex,

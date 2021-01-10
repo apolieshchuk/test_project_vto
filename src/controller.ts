@@ -1,36 +1,30 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import * as Utils from './utils';
 import MazeCell from './interfaces';
 
 export default {
-  // created maze from frontend
+  // created maze form on frontend
   create: (req: Request, res: Response) => {
     res.status(200).sendFile(`${__dirname}/views/index.html`);
   },
 
   // calculate maze turns
-  show: (req: Request, res: Response) => {
-    // parse string
-    const mazeMap: MazeCell[][] = Utils.parseRequest(req.body.maze);
+  show: (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // creating MazeMap with mazeCell Objects.
+      const mazeMap: MazeCell[][] = Utils.createMazeMap(req.body.maze);
 
-    // TODO validation maze
-    const turns = Utils.mazeTurnsCounter(mazeMap);
+      // main count logic
+      const turns = Utils.mazeTurnsCounter(mazeMap);
 
-    // if (mazeArr.length !== 5)
-    // mazeArr = maze.match(/\[[01,ы]{5}\]/g); // get mazes rows
-    // maze.map( str => s)
+      // return success response
+      res.status(200).json({ data: turns });
+    } catch (error) {
+      // catch server error
+      res.status(400).json({ error: 'Invalid input' });
 
-    // const regx = /\[.*\]/g;
-    // const formatedInput = maze.match(regx);
-
-    // const regex = /\[[.",#]\]/g;
-
-    // const regx = /(^.*\[)(.*)(\].*$)/g;
-    // const formatedInput = req.body.maze.replace(regx, '$2');
-    // const formatedInput = req.body.maze.exec(regx, '');
-    // const formatedInput = regx.exec(req.body.maze);
-    // console.log(parsedMaze);
-
-    res.status(200).send({ data: turns });
+      // for watch error on server console
+      next(error);
+    }
   },
 };

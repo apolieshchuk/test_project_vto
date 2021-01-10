@@ -24,19 +24,54 @@
         <label for="exampleFormControlTextarea1" class="form-labe mb-2">Enter Maze</label>
         <textarea class="form-control" id="maze-input" rows="12" required></textarea>
       </div>
-      <div class="col-5">
+      <div class="col-5 mb-5">
         <button class="btn btn-primary col-12" onclick="sendForm()">Send</button>
+      </div>
+      <div id="infoBlock" class="alert alert-success" style="display: none" role="alert">
+        <span id="output"></span>
+      </div>
+      <div id="errorBlock" class="alert alert-danger" style="display: none" role="alert">
+        <span id="errorOutput"></span>
+      </div>
+      <div id="warningBlock" class="alert alert-warning" style="display: none" role="alert">
+        <span id="warningOutput"></span>
       </div>
     </div>
   </body>
+
   <script>
     function sendForm() {
-      // Use axios for only one request, just bc im hate standart HTMLRequest syntax
+      // clean string from redundant chars except needed accrodig task-> "".,][#
+      // (for prevent some micro-input fails)
+      let maze = document.getElementById('maze-input').value;
+      maze = maze.replace(/[^"".,\][#]/g, '');
+
       axios({
         method: 'post',
         url: '/maze',
-        data: { maze: document.getElementById('maze-input').value },
-      });
+        data: { maze },
+      })
+        .then((res) => {
+          // No turns case
+          if (res.data.data === -1) {
+            document.getElementById('warningOutput').innerHTML = `So sad, no routes :(`;
+            document.getElementById('warningBlock').style.display = 'block';
+            document.getElementById('errorBlock').style.display = 'none';
+            document.getElementById('infoBlock').style.display = 'none';
+            return;
+          }
+
+          document.getElementById('output').innerHTML = `Need ${res.data.data} turns for leave maze`;
+          document.getElementById('infoBlock').style.display = 'block';
+          document.getElementById('errorBlock').style.display = 'none';
+          document.getElementById('warningBlock').style.display = 'none';
+        })
+        .catch((res) => {
+          document.getElementById('errorOutput').innerHTML = res.response.data.error;
+          document.getElementById('errorBlock').style.display = 'block';
+          document.getElementById('infoBlock').style.display = 'none';
+          document.getElementById('warningBlock').style.display = 'none';
+        });
     }
   </script>
 </html>

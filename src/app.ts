@@ -12,9 +12,4 @@ app.use(express.json());
 // Application routing
 app.use('/', indexRouter);
 
-// Constants
-const port = 3000;
-const host = '0.0.0.0';
-
-// Start server
-app.listen(port, host, () => console.log(`Server is listening on port ${port}!`));
+export default app;

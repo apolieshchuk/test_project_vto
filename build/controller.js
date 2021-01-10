@@ -38,28 +38,25 @@ var __importStar =
 Object.defineProperty(exports, '__esModule', { value: true });
 var Utils = __importStar(require('./utils'));
 exports.default = {
-  // created maze from frontend
+  // created maze form on frontend
   create: function (req, res) {
     res.status(200).sendFile(__dirname + '/views/index.html');
   },
   // calculate maze turns
-  show: function (req, res) {
-    // parse string
-    var mazeMap = Utils.parseRequest(req.body.maze);
-    // TODO validation maze
-    var turns = Utils.mazeTurnsCounter(mazeMap);
-    // if (mazeArr.length !== 5)
-    // mazeArr = maze.match(/\[[01,ы]{5}\]/g); // get mazes rows
-    // maze.map( str => s)
-    // const regx = /\[.*\]/g;
-    // const formatedInput = maze.match(regx);
-    // const regex = /\[[.",#]\]/g;
-    // const regx = /(^.*\[)(.*)(\].*$)/g;
-    // const formatedInput = req.body.maze.replace(regx, '$2');
-    // const formatedInput = req.body.maze.exec(regx, '');
-    // const formatedInput = regx.exec(req.body.maze);
-    // console.log(parsedMaze);
-    res.status(200).send({ data: turns });
+  show: function (req, res, next) {
+    try {
+      // parse maze string.
+      var mazeMap = Utils.parseRequest(req.body.maze);
+      // main count logic
+      var turns = Utils.mazeTurnsCounter(mazeMap);
+      // return success response
+      res.status(200).json({ data: turns });
+    } catch (error) {
+      // catch server error
+      res.status(500).json({ error: 'Invalid input' });
+      // for watch error on server console
+      next(error);
+    }
   },
 };
 //# sourceMappingURL=controller.js.map
