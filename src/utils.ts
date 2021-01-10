@@ -16,7 +16,6 @@ export const createMazeMap = (mazeStr: string): MazeCell[][] => {
 
   // Build Maze Map with MazeCells Objects.
   return mazeRows.map((row: string[], rowIndex: number): MazeCell[] => {
-    // ROWS
     // Validate NOT the same rows size
     if (row.length !== mazeRows[0].length) {
       throw new Error();
@@ -25,7 +24,6 @@ export const createMazeMap = (mazeStr: string): MazeCell[][] => {
     // set MazeCell object to all columns cells
     return row.map(
       (col: string, colIndex: number): MazeCell => {
-        // COLS
         // Validate COLS content
         if (col !== '.' && col !== '#') {
           throw new Error();
