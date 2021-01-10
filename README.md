@@ -1,7 +1,7 @@
 # General information
 
-This is Votendo test server from A.Polieshchuk
-NPM INSTALL -> NPM START for deploy server
+This is Votendo test server from A.Polieshchuk.
+### NPM INSTALL -> NPM START for deploy server ###
 
 # Server run
 
