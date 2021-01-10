@@ -68,7 +68,7 @@ const bfs = (mazeMap: MazeCell[][], queue: MazeCell[], endPoint: MazeCell): numb
   neighbours.push(mazeMap[vertex.y + 1] ? mazeMap[vertex.y + 1][vertex.x] : undefined); // bot
   neighbours.push(mazeMap[vertex.y][vertex.x - 1]); // left.
   neighbours.push(mazeMap[vertex.y][vertex.x + 1]); // right
-  neighbours = neighbours.filter(Boolean); // filter undefiend neighbours
+  neighbours = neighbours.filter(Boolean); // remove undefined neighbours
 
   // do bfs for every neighbour cell
   neighbours.forEach((cell: MazeCell | undefined) => {
@@ -93,6 +93,5 @@ const bfs = (mazeMap: MazeCell[][], queue: MazeCell[], endPoint: MazeCell): numb
 export const mazeTurnsCounter = (mazeMap: MazeCell[][]): number => {
   const startPoint: MazeCell = mazeMap[0][0];
   const endPoint: MazeCell = mazeMap[mazeMap.length - 1][mazeMap[0].length - 1];
-  const turns = bfs(mazeMap, [startPoint], endPoint);
-  return turns;
+  return bfs(mazeMap, [startPoint], endPoint);
 };
