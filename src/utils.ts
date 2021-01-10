@@ -38,7 +38,7 @@ export const createMazeMap = (mazeStr: string): MazeCell[][] => {
         };
 
         return mazeCellObj;
-      }
+      },
     );
   });
 };
