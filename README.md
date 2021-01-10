@@ -1,13 +1,14 @@
 # General information
 
 This is Votendo test server from A.Polieshchuk
+NPM INSTALL -> NPM START for deploy server
 
 # Server run
 
 For install node_modules use NPM INSTALL
+For run server use NPM START
 For build project use NPM RUN BUILD
-For run server use command NPM START
-For run tests use command NPM TEST
+For run tests use NPM TEST
 
 # Server structure
 
@@ -40,6 +41,6 @@ For run tests use command NPM TEST
 7. Make input validations - 0.5h
 8. Make some more powerfull frontend (add error/info allerts) - 1h
 9. Write controllers tests - 1h
-10. PrePush code cleaning - 0.5min
+10. PrePush code cleaning - 0.5h
 
 Total time - 12,5h
