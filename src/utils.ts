@@ -9,8 +9,8 @@ export const createMazeMap = (mazeStr: string): MazeCell[][] => {
   // try parse JSON Array from frontend. If parse error, controller will catch
   const mazeRows: string[][] = JSON.parse(mazeStr);
 
-  // check empty arrays
-  if (!mazeRows.length || !mazeRows[0].length) {
+  // check empty arrays and maximum arrays size (30x30 according assignment)
+  if (!mazeRows.length || !mazeRows[0].length || mazeRows.length > 30 || mazeRows[0].length > 30) {
     throw new Error();
   }
 
