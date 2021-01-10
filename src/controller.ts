@@ -1,11 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 import * as Utils from './utils';
+
 import MazeCell from './interfaces';
+
+const path = require('path');
 
 export default {
   // created maze form on frontend
   create: (req: Request, res: Response) => {
-    res.status(200).sendFile(`${__dirname}/views/index.html`);
+    res.status(200).sendFile(`${path.resolve('src')}/views/index.html`);
   },
 
   // calculate maze turns
