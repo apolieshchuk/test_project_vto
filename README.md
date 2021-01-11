@@ -1,6 +1,17 @@
 # General information
 
-This is Votendo test server from A.Polieshchuk.
+In this project u can calculate minimum number of turns for exit maze.
+input format example:  
+[
+  [".", ".", "."],
+  ["#", "#", "."],
+  [".", ".", "."],
+  [".", "#", "#"],
+  [".", ".", "."]
+]  
+"#" - maze wall  
+"." - empty cell  
+
 ### NPM INSTALL -> NPM START for deploy server ###
 
 # Server run
