@@ -2,12 +2,12 @@
 
 In this project u can calculate minimum number of turns for exit maze.
 input format example:  
-[
-  [".", ".", "."],
-  ["#", "#", "."],
-  [".", ".", "."],
-  [".", "#", "#"],
-  [".", ".", "."]
+[  
+  [".", ".", "."],  
+  ["#", "#", "."],  
+  [".", ".", "."],  
+  [".", "#", "#"],  
+  [".", ".", "."]  
 ]  
 "#" - maze wall  
 "." - empty cell  
